@@ -11,11 +11,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class EditFileXML {
+    //tao noi chua id cau cac lane connection voi nhau
     public static ArrayList<String> output = new ArrayList<String>();
 
     public static void main(String agrv[]) {
 
         try {
+            //doc file voi DOM parsers
             File file = new File("vd012.net.xml");
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -32,7 +34,7 @@ public class EditFileXML {
                 System.out.println("2. nhap id lane de in ra do thi vao file output.txt.");
                 String choose = scanner.nextLine();
                 switch (choose) {
-                    case "1":
+                    case "1": 
                         String inputcase = scanner.nextLine();
                         for (int itr = 0; itr < edgeList.getLength(); itr++) {
                             Node edgeNode = edgeList.item(itr);
@@ -62,6 +64,7 @@ public class EditFileXML {
                         }
                         break;
                     case "2":
+                    //tim lane co id == input
                         String input = scanner.nextLine();
                         output.add(input);
                         int count = 0;
@@ -100,6 +103,7 @@ public class EditFileXML {
                                 }
 
                             }
+                            // add vao arrayList lane nguoc voi X : -X
                             String output1 = null;
                             int test1 = 0;
                             if (("-".equals(Character.toString(input.charAt(0))) == true)) {
@@ -119,6 +123,7 @@ public class EditFileXML {
 
                                 output.add(output1);
                             }
+                            //tim lane connection voi lane input
                             for (int itr = 0; itr < connectionList.getLength(); itr++) {
                                 Node connectionNode = connectionList.item(itr);
                                 if (connectionNode.getNodeType() == Node.ELEMENT_NODE) {
